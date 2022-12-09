@@ -9,5 +9,10 @@ See [How I re-over-engineered my home network for privacy and security](https://
 ## Usage
 
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.org/software/) and flash the latest version of Raspberry Pi OS *Lite*.
+1. Install `sshpass`
+    1. On MacOS (source: https://stackoverflow.com/a/62623099/6067848)
+    ```
+    brew install hudochenkov/sshpass/sshpass
+    ```
 2. Run `ansible-playbook playbook.yml --inventory hosts.yml`
 3. Sit back and wait until you have a fully configured PiHole running in about 5-10 minutes
