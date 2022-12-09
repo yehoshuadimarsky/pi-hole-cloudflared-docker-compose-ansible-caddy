@@ -63,6 +63,25 @@
       apt:
         name: ufw
         state: present
+    
+    # Reboot, otherwise issues with ufw
+    # https://raspberrypi.stackexchange.com/a/121762
+    # https://www.middlewareinventory.com/blog/ansible_wait_for_reboot_to_complete/
+    - name: Reboot the server
+      become: true
+      become_user: root
+      shell: "sleep 5 && reboot"
+      async: 1
+      poll: 0
+  
+    - name: Wait for the reboot and reconnect 
+      wait_for:
+        port: 22
+        host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+        search_regex: OpenSSH
+        delay: 10
+        timeout: 60
+      connection: local
 
     # Rate limits SSH attempts
     - name: limit ssh
