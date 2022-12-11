@@ -9,6 +9,9 @@ See [How I re-over-engineered my home network for privacy and security](https://
 ## Usage
 
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.org/software/) and flash the latest version of Raspberry Pi OS *Lite*.
+    1. Set the SSH method to your SSH public key
+    1. Set the username to `pi`
+    1. Set up the Wifi connection details
 1. Go to your router, find the newly connected RPI, and assign it a static IP address
 1. Edit the file `hosts.yml` with the internal static IP address of your Raspberry PI
 1. Get a Tailscale auth key, set it as an env var:
