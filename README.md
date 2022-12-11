@@ -9,10 +9,12 @@ See [How I re-over-engineered my home network for privacy and security](https://
 ## Usage
 
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.org/software/) and flash the latest version of Raspberry Pi OS *Lite*.
-1. Install `sshpass`
-    1. On MacOS (source: https://stackoverflow.com/a/62623099/6067848)
+1. Go to your router, find the newly connected RPI, and assign it a static IP address
+1. Edit the file `hosts.yml` with the internal static IP address of your Raspberry PI
+1. Get a Tailscale auth key, set it as an env var:
+    ```shell
+    export TAILSCALE_KEY=<key>
     ```
-    brew install hudochenkov/sshpass/sshpass
-    ```
-2. Run `ansible-playbook playbook.yml --inventory hosts.yml`
-3. Sit back and wait until you have a fully configured PiHole running in about 5-10 minutes
+1. Run `./setup.sh`
+1. Go to `http://<internal ip address>:3000` to access the AdGuard Admin Web UI
+1. Follow instructions there to set it up and connect it to your router
