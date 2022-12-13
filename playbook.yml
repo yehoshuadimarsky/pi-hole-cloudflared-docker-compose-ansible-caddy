@@ -121,12 +121,24 @@
           - DNS
           - WWW
           - WWW Secure
-      - name: ufw allow port 3000 (for AdGuard)
+      - name: ufw tcp rules for AdGuard
         become: true
         community.general.ufw:
           rule: allow
-          port: 3000
+          port: '{{ item | int }}'
           proto: tcp
+        loop: 
+          - 67
+          - 3000
+      - name: ufw udp rules for AdGuard
+        become: true
+        community.general.ufw:
+          rule: allow
+          port: '{{ item | int }}'
+          proto: udp
+        loop: 
+          - 67
+          - 68
       - name: enable ufw and default to deny
         become: true
         ufw:
