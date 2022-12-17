@@ -48,22 +48,6 @@
           enabled: true
       tags: system
 
-    # # Set Static IP of PiHole so other devices can query it for DNS lookups
-    # - name: Install network manager
-    #   become: true
-    #   apt:
-    #     name: network-manager
-    #     state: present
-    # - name: configure network
-    #   become: true
-    #   community.general.nmcli:
-    #     state: present
-    #     conn_name: eth0
-    #     ifname: eth0
-    #     type: ethernet
-    #     ip4: 192.168.1.49
-    #     gw4: 192.168.1.1
-
     - block:
       # Prevents SSH brute force attacks
       - name: install fail2ban
