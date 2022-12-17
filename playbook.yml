@@ -121,7 +121,7 @@
           - DNS
           - WWW
           - WWW Secure
-      - name: ufw tcp rules for AdGuard
+      - name: ufw tcp rules for DHCP + adguard
         become: true
         community.general.ufw:
           rule: allow
@@ -130,7 +130,7 @@
         loop: 
           - 67
           - 3000
-      - name: ufw udp rules for AdGuard
+      - name: ufw udp rules for DHCP
         become: true
         community.general.ufw:
           rule: allow
