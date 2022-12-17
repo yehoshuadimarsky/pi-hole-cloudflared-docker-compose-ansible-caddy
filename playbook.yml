@@ -1,14 +1,14 @@
 - hosts: all
   tasks:
 
-    # Allows you to SSH in via SSH key, instead of password auth, pulling from your GitHub Public key
-    - name: Ensure SSH Key is authorized
-      authorized_key:
-        user: pi
-        state: present
-        key: https://github.com/yehoshuadimarsky.keys
-
     - block:
+      # Allows you to SSH in via SSH key, instead of password auth, pulling from your GitHub Public key
+      - name: Ensure SSH Key is authorized
+        authorized_key:
+          user: pi
+          state: present
+          key: https://github.com/yehoshuadimarsky.keys
+
       # Update system-level dependencies
       - name: update and upgrade apt packages
         become: true
